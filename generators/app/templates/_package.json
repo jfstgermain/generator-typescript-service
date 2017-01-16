@@ -1,0 +1,44 @@
+{
+  "name": "<%= appname %>",
+  "version": "0.0.0",
+  "description": "<%= appname %>",
+  "license": "MIT",
+  "repository": "",
+  "author": "",
+  "keywords": [
+    ""
+  ],
+  "main": "dist/lib/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.5",
+    "bunyan-config": "^0.2.0",
+    "lodash": "^4.17.4",
+    "bluebird": "^3.4.7"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.0.37",
+    "@types/bunyan": "0.0.34",
+    "@types/bunyan-config": "^0.2.1",
+    "@types/chai": "^3.4.34",
+    "@types/lodash": "^4.14.48",
+    "@types/mocha": "^2.2.36",
+    "@types/node": "^6.0.59",
+    "@types/sinon": "^1.16.34",
+    "bunyan-config": "^0.2.0",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "lib-logger-helper": "git+ssh://git@bitbucket.org/jfstgermain/lib-logger-helper.git",
+    "lib-gulp-bootstrap": "git+ssh://git@bitbucket.org/jfstgermain/lib-gulp-bootstrap.git",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0",
+    "ts-node": "^2.0.0",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.4"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}

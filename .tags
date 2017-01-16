@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+language	/Users/jfstgermain/dev/generator-typescript-service/.travis.yml	/^language: node_js$/;"	function	line:1
+node_js	/Users/jfstgermain/dev/generator-typescript-service/.travis.yml	/^node_js:$/;"	function	line:2
+Generator	/Users/jfstgermain/dev/generator-typescript-service/generators/app/index.js	/^var Generator = require('yeoman-generator');$/;"	variable	line:2
+chalk	/Users/jfstgermain/dev/generator-typescript-service/generators/app/index.js	/^var chalk = require('chalk');$/;"	variable	line:3
+yosay	/Users/jfstgermain/dev/generator-typescript-service/generators/app/index.js	/^var yosay = require('yosay');$/;"	variable	line:4
+prompting	/Users/jfstgermain/dev/generator-typescript-service/generators/app/index.js	/^  prompting: function () {$/;"	function	line:7
+writing	/Users/jfstgermain/dev/generator-typescript-service/generators/app/index.js	/^  writing: function () {$/;"	function	line:26
+install	/Users/jfstgermain/dev/generator-typescript-service/generators/app/index.js	/^  install: function () {$/;"	function	line:33
+path	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var path = require('path');$/;"	variable	line:2
+gulp	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var gulp = require('gulp');$/;"	variable	line:3
+eslint	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var eslint = require('gulp-eslint');$/;"	variable	line:4
+excludeGitignore	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var excludeGitignore = require('gulp-exclude-gitignore');$/;"	variable	line:5
+mocha	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var mocha = require('gulp-mocha');$/;"	variable	line:6
+istanbul	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var istanbul = require('gulp-istanbul');$/;"	variable	line:7
+nsp	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var nsp = require('gulp-nsp');$/;"	variable	line:8
+plumber	/Users/jfstgermain/dev/generator-typescript-service/gulpfile.js	/^var plumber = require('gulp-plumber');$/;"	variable	line:9
+path	/Users/jfstgermain/dev/generator-typescript-service/test/app.js	/^var path = require('path');$/;"	variable	line:2
+assert	/Users/jfstgermain/dev/generator-typescript-service/test/app.js	/^var assert = require('yeoman-assert');$/;"	variable	line:3
+helpers	/Users/jfstgermain/dev/generator-typescript-service/test/app.js	/^var helpers = require('yeoman-test');$/;"	variable	line:4
+describe	/Users/jfstgermain/dev/generator-typescript-service/test/app.js	/^describe('generator-typescript-service:app', function () {$/;"	function	line:6
+before	/Users/jfstgermain/dev/generator-typescript-service/test/app.js	/^  before(function () {$/;"	function	line:7
+it	/Users/jfstgermain/dev/generator-typescript-service/test/app.js	/^  it('creates files', function () {$/;"	function	line:13
