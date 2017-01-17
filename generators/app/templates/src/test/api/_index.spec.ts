@@ -10,7 +10,7 @@ import app from '../../lib';
 chai.use(sinonChai);
 
 describe('The <something>', function () {
-  before(function (cd) {
+  before(function (cb) {
     // Wait that the application has initialized before starting tests
     app.waitStarted(cb);
   });

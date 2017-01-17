@@ -1,3 +1,4 @@
+import config from 'config';
 import * as events from 'events';
 import * as fs from 'fs';
 import * as http from 'http';
@@ -80,6 +81,7 @@ export class RestifyServer extends events.EventEmitter {
   }
 }
 
-export const restifyServer = new RestifyServer();
-
+const restifyServer = new RestifyServer();
 restifyServer.start();
+
+export default restifyServer;

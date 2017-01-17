@@ -15,18 +15,6 @@ module.exports = class extends Generator {
         `Welcome to the minimal ${chalk.red('Node TypeScript')} generator!`
       )
     );
-
-    this.log([
-      chalk.cyan(
-        'I simply get down to business of generating, no questions asked!'
-      ),
-      chalk.yellow(
-        'Libraries you ask? I use npm (or optionally gulp) as task runner and mocha for testing.'
-      ),
-      chalk.gray(
-        'Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.'
-      )
-    ].join('\n'));
   }
 
   prompting() {
@@ -57,7 +45,6 @@ module.exports = class extends Generator {
       message: 'Will you need to query an Oracle database?'
     }]).then(answers => {
       this.answers = answers;
-      this.appname = answers.name;
     });
   }
 
@@ -77,6 +64,16 @@ module.exports = class extends Generator {
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
       {appname: this.answers.name}
+    );
+
+    this.fs.copy(
+      this.templatePath('config/default.yaml'),
+      this.destinationPath('config/default.yaml')
+    );
+
+    this.fs.copy(
+      this.templatePath('Dockerfile'),
+      this.destinationPath('Dockerfile')
     );
 
     this.fs.copy(
@@ -106,10 +103,9 @@ module.exports = class extends Generator {
       this.destinationPath('tsconfig.json')
     );
 
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('_tslint.json'),
-      this.destinationPath('tslint.json'),
-      {year: today.getFullYear().toPrecision(4)}
+      this.destinationPath('tslint.json')
     );
 
     this.fs.copy(
@@ -117,7 +113,16 @@ module.exports = class extends Generator {
       this.destinationPath('README.md')
     );
 
-    // build test directories and directories
+    this.fs.copy(
+      this.templatePath('src/types/globals.d.ts'),
+      this.destinationPath('src/types/globals.d.ts')
+    );
+
+    this.fs.copy(
+      this.templatePath('src/test/utils/common.ts'),
+      this.destinationPath('src/test/utils/common.ts')
+    );
+
     if (this.answers.restify) {
       this.fs.copyTpl(
         this.templatePath('src/lib/_restify-index.ts'),
@@ -129,8 +134,8 @@ module.exports = class extends Generator {
       );
 
       this.fs.copyTpl(
-        this.templatePath('src/test/api/_index.ts'),
-        this.destinationPath('src/test/api/index.ts')
+        this.templatePath('src/test/api/_index.spec.ts'),
+        this.destinationPath('src/test/api/index.spec.ts')
       );
     } else {
       this.fs.copyTpl(
@@ -140,8 +145,8 @@ module.exports = class extends Generator {
     }
 
     this.fs.copyTpl(
-      this.templatePath('src/test/unit/_index.ts'),
-      this.destinationPath('src/test/unit/index.ts')
+      this.templatePath('src/test/unit/_index.spec.ts'),
+      this.destinationPath('src/test/unit/index.spec.ts')
     );
   }
 
@@ -154,6 +159,7 @@ module.exports = class extends Generator {
     let npmInstalls = [
       'lodash',
       'bluebird',
+      'config',
       'lib-logger-helper@git+ssh://git@bitbucket.org/jfstgermain/lib-logger-helper.git'
     ];
 
