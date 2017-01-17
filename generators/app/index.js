@@ -1,8 +1,6 @@
-'use strict';
 var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var path = require('path');
 var _ = require('lodash');
 
 module.exports = class extends Generator {
@@ -63,14 +61,14 @@ module.exports = class extends Generator {
     });
   }
 
-  _writingDirs() {
-    this.fs.copy(
-      this.templatePath('src'),
-      this.destinationPath('src'),
-      {ignore: '_*.*'}
-    );
-    // this.directory('src', 'src');
-  }
+  // _writingDirs() {
+  //   this.fs.copy(
+  //     this.templatePath('src'),
+  //     this.destinationPath('src'),
+  //     {ignore: '_*.*'}
+  //   );
+  //   // this.directory('src', 'src');
+  // }
 
   _writingProjectFiles() {
     let today = new Date();
@@ -78,7 +76,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
-      {appname: _.kebabCase(path.basename(process.cwd()))}
+      {appname: this.answers.name}
     );
 
     this.fs.copy(
@@ -118,10 +116,37 @@ module.exports = class extends Generator {
       this.templatePath('README.md'),
       this.destinationPath('README.md')
     );
+
+    // build test directories and directories
+    if (this.answers.restify) {
+      this.fs.copyTpl(
+        this.templatePath('src/lib/_restify-index.ts'),
+        this.destinationPath('src/lib/index.ts'),
+        {
+          year: today.getFullYear().toPrecision(4),
+          appname: this.answers.name
+        }
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('src/test/api/_index.ts'),
+        this.destinationPath('src/test/api/index.ts')
+      );
+    } else {
+      this.fs.copyTpl(
+        this.templatePath('src/lib/_basic-index.ts'),
+        this.destinationPath('src/lib/index.ts')
+      );
+    }
+
+    this.fs.copyTpl(
+      this.templatePath('src/test/unit/_index.ts'),
+      this.destinationPath('src/test/unit/index.ts')
+    );
   }
 
   writing() {
-    this._writingDirs();
+    // this._writingDirs();
     this._writingProjectFiles();
   }
 
@@ -154,22 +179,23 @@ module.exports = class extends Generator {
       'mocha'
     ];
 
-    if (this.answers.restify === 'yes') {
+    if (this.answers.restify) {
       npmInstalls.push('restify');
+      npmInstalls.push('tsoa');
       npmDevInstalls.push('@types/restify');
     }
 
-    if (this.answers.amqp === 'yes') {
+    if (this.answers.amqp) {
       npmInstalls.push('amqplib');
       npmDevInstalls.push('@types/amqplib');
     }
 
-    if (this.answers.soap === 'yes') {
+    if (this.answers.soap) {
       npmInstalls.push('soap');
       npmDevInstalls.push('@types/soap');
     }
 
-    if (this.answers.soap === 'yes') {
+    if (this.answers.oracle) {
       npmInstalls.push('oracledb');
       npmInstalls.push('knex');
       npmInstalls.push('knex-migrator');
@@ -177,7 +203,7 @@ module.exports = class extends Generator {
       npmDevInstalls.push('@types/knex');
     }
 
-    this.npmInstall(npmInstalls, {save: true});
-    this.npmInstall(npmDevInstalls, {'save-dev': true});
+    // this.npmInstall(npmInstalls, {save: true});
+    // this.npmInstall(npmDevInstalls, {'save-dev': true});
   }
 };

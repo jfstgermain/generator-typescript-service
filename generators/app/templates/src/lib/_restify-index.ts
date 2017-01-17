@@ -1,39 +1,26 @@
-// logger helper stuff....
-// export server handle for unit testing
+import * as events from 'events';
+import * as fs from 'fs';
+import * as http from 'http';
+import * as restify from 'restify';
+import * as util from 'util';
+import * as path from 'path';
+import loggerHelper from 'lib-logger-helper';
 
-import * as events from "events";
-import * as fs from "fs";
-import * as http from "http";
-import * as restify from "restify";
-import * as util from "util";
-import * as path from "path";
-
-const swaggerRestify = require("swagger-restify-mw");
-
-
-// class ServerMonitor extends events.EventEmitter {
-//     public started = false;
-
-//     public notifyStart() {
-//         this.started = true;
-//         this.emit('started');
-//     }
-// }
-
-// const serverMonitor = new ServerMonitor();
+const logger = loggerHelper.logger();
+const swaggerRestify = require('swagger-restify-mw');
 
 /**
  * Serveur applicatif RESTful
  *
  * @class RestifyServer
  */
-class RestifyServer extends events.EventEmitter {
-  private server;
+export class RestifyServer extends events.EventEmitter {
   public started = false;
+  private server;
 
   private notifyStarted() {
     this.started = true;
-    this.emit("started");
+    this.emit('started');
   }
 
   public start() {
@@ -44,8 +31,9 @@ class RestifyServer extends events.EventEmitter {
       let port = process.env.PORT || 8080;
       let options = {
         appRoot: process.cwd(),
-        name: "<%= appname %>",
-        swaggerFile: path.resolve(__dirname, "../config", "swagger.yaml")
+        log: logger,
+        name: '<%= appname %>',
+        swaggerFile: path.resolve(__dirname, '../config', 'swagger.yaml'),
       };
 
       logger.info({ restify_options: options });
@@ -61,7 +49,7 @@ class RestifyServer extends events.EventEmitter {
         self.server.listen(port, function() {
           self.notifyStarted();
 
-          logger.info("Server started:", { server_name: self.server.name, server_url: self.server.url });
+          logger.info('Server started:', { server_name: self.server.name, server_url: self.server.url });
         });
       });
     }
@@ -76,8 +64,8 @@ class RestifyServer extends events.EventEmitter {
    * @returns {undefined}
    */
   private crossOrigin(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     return next();
   }
 
@@ -85,7 +73,7 @@ class RestifyServer extends events.EventEmitter {
     if (this.started) {
       done();
     } else {
-      this.on("started", function() {
+      this.on('started', function() {
         done();
       });
     }
