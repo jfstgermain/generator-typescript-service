@@ -2,12 +2,12 @@ import * as events from 'events';
 import * as fs from 'fs';
 import * as http from 'http';
 import * as restify from 'restify';
+import * as swaggerRestify from 'swagger-restify-mw';
 import * as util from 'util';
 import * as path from 'path';
 import loggerHelper from 'lib-logger-helper';
 
 const logger = loggerHelper.logger();
-const swaggerRestify = require('swagger-restify-mw');
 
 /**
  * Serveur applicatif RESTful
@@ -17,11 +17,6 @@ const swaggerRestify = require('swagger-restify-mw');
 export class RestifyServer extends events.EventEmitter {
   public started = false;
   private server;
-
-  private notifyStarted() {
-    this.started = true;
-    this.emit('started');
-  }
 
   public start() {
     const self = this;
@@ -55,6 +50,21 @@ export class RestifyServer extends events.EventEmitter {
     }
   }
 
+  public waitStarted(done) {
+    if (this.started) {
+      done();
+    } else {
+      this.on('started', function() {
+        done();
+      });
+    }
+  }
+
+  private notifyStarted() {
+    this.started = true;
+    this.emit('started');
+  }
+
   /**
    * Configure le serveur pour supporter les appels d'origine externe
    *
@@ -67,16 +77,6 @@ export class RestifyServer extends events.EventEmitter {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     return next();
-  }
-
-  public waitStarted(done) {
-    if (this.started) {
-      done();
-    } else {
-      this.on('started', function() {
-        done();
-      });
-    }
   }
 }
 

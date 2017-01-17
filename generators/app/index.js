@@ -176,12 +176,14 @@ module.exports = class extends Generator {
       'tslint',  // we might want to pin down their version and not take the latest one
       'typescript@^2.1.4',
       'lib-gulp-bootstrap@git+ssh://git@bitbucket.org/jfstgermain/lib-gulp-bootstrap.git',
-      'mocha'
+      'mocha',
+      'gulp-tslint'
     ];
 
     if (this.answers.restify) {
       npmInstalls.push('restify');
       npmInstalls.push('tsoa');
+      npmInstalls.push('swagger-restify-mw');
       npmDevInstalls.push('@types/restify');
     }
 
@@ -203,7 +205,7 @@ module.exports = class extends Generator {
       npmDevInstalls.push('@types/knex');
     }
 
-    // this.npmInstall(npmInstalls, {save: true});
-    // this.npmInstall(npmDevInstalls, {'save-dev': true});
+    this.npmInstall(npmInstalls, {save: true});
+    this.npmInstall(npmDevInstalls, {'save-dev': true});
   }
 };

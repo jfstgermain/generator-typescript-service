@@ -5,7 +5,7 @@ chai.use(sinonChai);
 
 describe('The <something>', function () {
   before(function () {
-
+    console.log('before block');
   });
 
   describe('Sub functionality of something', function () {
