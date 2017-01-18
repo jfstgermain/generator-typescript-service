@@ -52,8 +52,7 @@ module.exports = class extends Generator {
         choices: ['yes', 'no'],
         message: 'Will you need to query an Oracle database?'
       }]).then(secondAnswers => {
-        this.answers = secondAnswers;
-        this.answers.name = firstAnswers.name;
+        this.answers = _.merge(firstAnswers, secondAnswers);
       });
     });
   }
