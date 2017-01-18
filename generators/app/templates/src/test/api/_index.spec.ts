@@ -23,7 +23,7 @@ describe('The <something>', function () {
 
     it('should do something right async', function (cb) {
       request(server)
-        .get('/')
+        .get('/api/gdam/')
         .expect(200, cb);
     });
   });

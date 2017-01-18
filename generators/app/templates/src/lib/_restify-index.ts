@@ -22,7 +22,7 @@ export class RestifyServer extends events.EventEmitter {
   public start() {
     const self = this;
 
-    if (!this.server) {
+    if (!self.server) {
       // configs
       let port = process.env.PORT || 8080;
       let options = {
@@ -49,6 +49,13 @@ export class RestifyServer extends events.EventEmitter {
         });
       });
     }
+
+    // ***** DUMMY ROUTE TO BE REMOVED *****
+    self.server.get('/api/gdam', (req, res) => {
+      logger.debug({some_field: 'hello'});
+      res.send(200);
+    });
+    // *************************************
   }
 
   public waitStarted(cb) {

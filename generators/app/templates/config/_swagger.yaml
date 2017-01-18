@@ -15,3 +15,9 @@ consumes:
 # format of the responses to the client (Accepts)
 produces:
   - application/json
+paths:
+  /:
+    get:
+      responses:
+        200:
+          description: OK
