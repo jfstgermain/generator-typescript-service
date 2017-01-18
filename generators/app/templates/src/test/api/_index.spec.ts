@@ -13,7 +13,7 @@ chai.use(sinonChai);
 describe('The <something>', function () {
   before(function (cb) {
     // Wait that the application has initialized before starting tests
-    app.waitStarted(cb);
+    server.waitStarted(cb);
   });
 
   describe('Sub functionality of something', function () {
