@@ -53,9 +53,9 @@ export class RestifyServer extends events.EventEmitter {
 
   public waitStarted(cb) {
     if (this.started) {
-      done();
+      cb();
     } else {
-      this.on('started', cb);
+      this.once('started', cb);
     }
   }
 

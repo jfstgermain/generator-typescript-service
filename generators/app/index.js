@@ -79,6 +79,16 @@ module.exports = class extends Generator {
     );
 
     this.fs.copy(
+      this.templatePath('doc/BEST-PRACTICES.md'),
+      this.destinationPath('doc/BEST-PRACTICES.md')
+    );
+
+    this.fs.copy(
+      this.templatePath('doc/TESTING.md'),
+      this.destinationPath('doc/TESTING.md')
+    );
+
+    this.fs.copy(
       this.templatePath('config/default.yaml'),
       this.destinationPath('config/default.yaml')
     );
