@@ -29,7 +29,7 @@ export class RestifyServer extends events.EventEmitter {
         appRoot: process.cwd(),
         log: logger,
         name: '<%= appName %>',
-        swaggerFile: path.resolve(process.cwd(), '../config', 'swagger.yaml'),
+        swaggerFile: path.resolve(process.cwd(), 'config', 'swagger.yaml'),
       };
 
       logger.info({ restify_options: options });
@@ -51,13 +51,11 @@ export class RestifyServer extends events.EventEmitter {
     }
   }
 
-  public waitStarted(done) {
+  public waitStarted(cb) {
     if (this.started) {
       done();
     } else {
-      this.on('started', function() {
-        done();
-      });
+      this.on('started', cb);
     }
   }
 
