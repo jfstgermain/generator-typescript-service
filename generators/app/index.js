@@ -79,13 +79,13 @@ module.exports = class extends Generator {
     );
 
     this.fs.copy(
-      this.templatePath('doc/BEST-PRACTICES.md'),
-      this.destinationPath('doc/BEST-PRACTICES.md')
+      this.templatePath('docs/BEST-PRACTICES.md'),
+      this.destinationPath('docs/BEST-PRACTICES.md')
     );
 
     this.fs.copy(
-      this.templatePath('doc/TESTING.md'),
-      this.destinationPath('doc/TESTING.md')
+      this.templatePath('docs/TESTING.md'),
+      this.destinationPath('docs/TESTING.md')
     );
 
     this.fs.copy(
