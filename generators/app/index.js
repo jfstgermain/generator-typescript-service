@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     // Have Yeoman greet the user.
     this.log(
       yosay(
-        `Welcome to the minimal ${chalk.red('Node TypeScript')} generator!`
+        `Welcome to the ${chalk.red('Node TypeScript')} generator!`
       )
     );
   }
@@ -21,8 +21,13 @@ module.exports = class extends Generator {
     return this.prompt([{
       type: 'input',
       name: 'name',
-      message: 'Your project name',
+      message: 'Your service / module name',
       default: this.appname
+    }, {
+      type: 'input',
+      name: 'description',
+      message: 'Your service / module description',
+      default: _.capitalize(`${this.appname} description`)
     }, {
       type: 'confirm',
       name: 'restify',
@@ -45,6 +50,7 @@ module.exports = class extends Generator {
       message: 'Will you need to query an Oracle database?'
     }]).then(answers => {
       this.answers = answers;
+      this.answers.name = _.kebabCase(answers.name);
     });
   }
 
@@ -63,7 +69,10 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
-      {appname: this.answers.name}
+      {
+        appName: this.answers.name,
+        description: this.answers.description
+      }
     );
 
     this.fs.copy(
@@ -104,6 +113,11 @@ module.exports = class extends Generator {
     );
 
     this.fs.copy(
+      this.templatePath('config/default.yaml'),
+      this.destinationPath('config/default.yaml')
+    );
+
+    this.fs.copy(
       this.templatePath('_tslint.json'),
       this.destinationPath('tslint.json')
     );
@@ -129,13 +143,19 @@ module.exports = class extends Generator {
         this.destinationPath('src/lib/index.ts'),
         {
           year: today.getFullYear().toPrecision(4),
-          appname: this.answers.name
+          appName: this.answers.name
         }
       );
 
       this.fs.copyTpl(
         this.templatePath('src/test/api/_index.spec.ts'),
         this.destinationPath('src/test/api/index.spec.ts')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('config/_swagger.yaml'),
+        this.destinationPath('config/swagger.yaml'),
+        {appName: this.answers.name}
       );
     } else {
       this.fs.copyTpl(

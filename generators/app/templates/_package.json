@@ -1,7 +1,7 @@
 {
-  "name": "<%= appname %>",
+  "name": "<%= appName %>",
   "version": "0.1.0",
-  "description": "<%= appname %>",
+  "description": "<%= description %>",
   "license": "MIT",
   "repository": "",
   "author": "",

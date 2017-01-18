@@ -28,8 +28,8 @@ export class RestifyServer extends events.EventEmitter {
       let options = {
         appRoot: process.cwd(),
         log: logger,
-        name: '<%= appname %>',
-        swaggerFile: path.resolve(__dirname, '../config', 'swagger.yaml'),
+        name: '<%= appName %>',
+        swaggerFile: path.resolve(process.cwd(), '../config', 'swagger.yaml'),
       };
 
       logger.info({ restify_options: options });
