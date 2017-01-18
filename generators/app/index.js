@@ -18,39 +18,43 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    return this.prompt([{
+    return this.prompt({
       type: 'input',
       name: 'name',
       message: 'Your service / module name',
       default: this.appname
-    }, {
-      type: 'input',
-      name: 'description',
-      message: 'Your service / module description',
-      default: _.capitalize(`${this.appname} description`)
-    }, {
-      type: 'confirm',
-      name: 'restify',
-      choices: ['yes', 'no'],
-      message: 'Will this be a Restify service?'
-    }, {
-      type: 'confirm',
-      name: 'amqp',
-      choices: ['yes', 'no'],
-      message: 'Will you be connecting to an AMQP based service?'
-    }, {
-      type: 'confirm',
-      name: 'soap',
-      choices: ['yes', 'no'],
-      message: 'Will you be making SOAP requests?'
-    }, {
-      type: 'confirm',
-      name: 'oracle',
-      choices: ['yes', 'no'],
-      message: 'Will you need to query an Oracle database?'
-    }]).then(answers => {
-      this.answers = answers;
-      this.answers.name = _.kebabCase(answers.name);
+    }).then(firstAnswers => {
+      firstAnswers.name = _.kebabCase(firstAnswers.name);
+
+      return this.prompt([{
+        type: 'input',
+        name: 'description',
+        message: 'Your service / module description',
+        default: _.capitalize(`${firstAnswers.name} description`)
+      }, {
+        type: 'confirm',
+        name: 'restify',
+        choices: ['yes', 'no'],
+        message: 'Will this be a Restify service?'
+      }, {
+        type: 'confirm',
+        name: 'amqp',
+        choices: ['yes', 'no'],
+        message: 'Will you be connecting to an AMQP based service?'
+      }, {
+        type: 'confirm',
+        name: 'soap',
+        choices: ['yes', 'no'],
+        message: 'Will you be making SOAP requests?'
+      }, {
+        type: 'confirm',
+        name: 'oracle',
+        choices: ['yes', 'no'],
+        message: 'Will you need to query an Oracle database?'
+      }]).then(secondAnswers => {
+        this.answers = secondAnswers;
+        this.answers.name = firstAnswers.name;
+      });
     });
   }
 
