@@ -1,0 +1,7 @@
+web:
+  container_name: <%= appName %>
+  image: vdmtl/<%= appName %>:prod
+  #volumes:
+    #- "/data/<%= appName %>:/opt/app"
+  ports:
+    - 3052:8080

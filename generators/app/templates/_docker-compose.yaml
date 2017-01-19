@@ -1,0 +1,7 @@
+web:
+  container_name: <%= appName %>
+  build: .
+  volumes:
+    - ".:/opt/app"
+  ports:
+    - 3000:3000
