@@ -98,6 +98,30 @@ module.exports = class extends Generator {
       this.destinationPath('Dockerfile')
     );
 
+    this.fs.copyTpl(
+      this.templatePath('_docker-compose-accept.yaml'),
+      this.destinationPath('docker-compose-accept.yaml'),
+      {appName: this.answers.name}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_docker-compose-dev.yaml'),
+      this.destinationPath('docker-compose-dev.yaml'),
+      {appName: this.answers.name}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_docker-compose-prod.yaml'),
+      this.destinationPath('docker-compose-prod.yaml'),
+      {appName: this.answers.name}
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_docker-compose.yaml'),
+      this.destinationPath('docker-compose.yaml'),
+      {appName: this.answers.name}
+    );
+
     this.fs.copy(
       this.templatePath('_gulpfile.js'),
       this.destinationPath('gulpfile.js')
