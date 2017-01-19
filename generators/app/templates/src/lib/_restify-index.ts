@@ -56,7 +56,7 @@ export class RestifyServer extends events.EventEmitter {
     // ***** DUMMY ROUTE TO BE REMOVED *****
     self.server.get('/api/gdam', (req, res) => {
       logger.debug({
-        some_field: 'hello'
+        some_field: 'hello',
       }, 'Always add the optional description as the last log param');
 
       res.send(200);
