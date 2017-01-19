@@ -7,6 +7,7 @@ import * as swaggerRestify from 'swagger-restify-mw';
 import * as util from 'util';
 import * as path from 'path';
 import loggerHelper from 'lib-logger-helper';
+import * as _ from 'lodash';
 
 const logger = loggerHelper.logger();
 
