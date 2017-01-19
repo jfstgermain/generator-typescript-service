@@ -47,7 +47,7 @@ export class RestifyServer extends events.EventEmitter {
 
           logger.info({
             server_name: self.server.name,
-            server_url: self.server.url
+            server_url: self.server.url,
           }, 'Server started');
         });
       });
