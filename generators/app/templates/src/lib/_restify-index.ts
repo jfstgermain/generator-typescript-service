@@ -45,7 +45,10 @@ export class RestifyServer extends events.EventEmitter {
         self.server.listen(port, function() {
           self.notifyStarted();
 
-          logger.info('Server started:', { server_name: self.server.name, server_url: self.server.url });
+          logger.info({
+            server_name: self.server.name,
+            server_url: self.server.url
+          }, 'Server started');
         });
       });
     }
