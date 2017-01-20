@@ -93,6 +93,12 @@ module.exports = class extends Generator {
       this.destinationPath('config/default.yaml')
     );
 
+    this.fs.copyTpl(
+      this.templatePath('config/_logger-production.json'),
+      this.destinationPath('config/logger-production.json'),
+      {appName: this.answers.name}
+    );
+
     this.fs.copy(
       this.templatePath('Dockerfile'),
       this.destinationPath('Dockerfile')

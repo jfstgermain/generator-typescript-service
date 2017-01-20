@@ -1,0 +1,8 @@
+{
+  "name": "<%= appName %>",
+  "streams": [{
+    "stream": "stdout",
+    "level": "error"
+  }],
+  "serializers": "./node_modules/lib-logger-helper:serializers"
+}

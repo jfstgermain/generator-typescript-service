@@ -9,8 +9,13 @@ import * as path from 'path';
 import loggerHelper from 'lib-logger-helper';
 import * as _ from 'lodash';
 
-const logger = loggerHelper.logger();
+let logger;
 
+if (process.env.NODE_ENV === 'production') {
+  logger = loggerHelper.logger(`${process.cwd()}/config/logger-production.json`);
+} else {
+  logger = loggerHelper.logger();
+}
 /**
  * Serveur applicatif RESTful
  *
