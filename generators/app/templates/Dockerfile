@@ -20,8 +20,6 @@ RUN npm install --no-cache --force
 #Bundle app source
 COPY . /usr/src/app
 
-RUN gulp default
-
 EXPOSE 8080
 
 CMD ["npm", "start"]
