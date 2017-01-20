@@ -217,7 +217,7 @@ module.exports = class extends Generator {
       'lodash',
       'bluebird',
       'config',
-      'lib-logger-helper@https://git@bitbucket.org/jfstgermain/lib-logger-helper.git'
+      'lib-logger-helper@https://bitbucket.org/jfstgermain/lib-logger-helper.git'
     ];
 
     let npmDevInstalls = [
@@ -238,7 +238,7 @@ module.exports = class extends Generator {
       'git-guppy',
       'tslint',  // we might want to pin down their version and not take the latest one
       'typescript@^2.1.4',
-      'lib-gulp-bootstrap@https://git@bitbucket.org/jfstgermain/lib-gulp-bootstrap.git',
+      'lib-gulp-bootstrap@https://bitbucket.org/jfstgermain/lib-gulp-bootstrap.git',
       'mocha',
       'gulp-tslint'
     ];
