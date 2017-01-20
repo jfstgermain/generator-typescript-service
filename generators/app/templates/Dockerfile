@@ -8,6 +8,11 @@ WORKDIR /usr/src/app
 
 #Install all dependencies
 COPY package.json /usr/src/app
+
+# Needed as long as we have node module dependencies pointing to
+# git repositories
+RUN apt-get update && apt-get install -y git
+
 RUN npm install -g gulp-cli
 RUN npm install gulp
 RUN npm install --no-cache --force
