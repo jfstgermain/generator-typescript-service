@@ -242,11 +242,11 @@ module.exports = class extends Generator {
       'gulp@^3.9.1',
       'nock',
       'git-guppy',
-      'tslint',  // we might want to pin down their version and not take the latest one
-      'typescript@^2.1.4',
+      // 'tslint',  // we might want to pin down their version and not take the latest one
+      // 'typescript@^2.1.4',
       'lib-gulp-bootstrap@https://bitbucket.org/jfstgermain/lib-gulp-bootstrap.git',
       'mocha',
-      'gulp-tslint'
+      // 'gulp-tslint'
     ];
 
     if (this.answers.restify) {

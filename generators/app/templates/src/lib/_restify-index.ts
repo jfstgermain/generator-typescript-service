@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
  */
 export class RestifyServer extends events.EventEmitter {
   public started = false;
-  private server;
+  public server;
 
   public start() {
     const self = this;

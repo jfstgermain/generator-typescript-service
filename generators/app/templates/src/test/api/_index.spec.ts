@@ -6,14 +6,14 @@ import * as request from 'supertest';
 // third party http request isn't possible.  Use Sinon mocks
 // otherwise
 import * as nock from 'nock';
-import server from '../../lib';
+import app from '../../lib';
 
 chai.use(sinonChai);
 
 describe('The <something>', function () {
   before(function (cb) {
     // Wait that the application has initialized before starting tests
-    server.waitStarted(cb);
+    app.waitStarted(cb);
   });
 
   describe('Sub functionality of something', function () {
@@ -22,7 +22,7 @@ describe('The <something>', function () {
     });
 
     it('should do something right async', function (cb) {
-      request(server)
+      request(app.server))
         .get('/api/gdam/')
         .expect(200, cb);
     });
