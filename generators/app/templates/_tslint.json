@@ -7,6 +7,7 @@
         "only-arrow-functions": 0,
         "ordered-imports": 0,
         "no-string-literal": 0,
-        "no-console": 0
+        "no-console": 0,
+        "curly": 0
     }
 }

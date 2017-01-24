@@ -16,6 +16,10 @@ describe('The <something>', function () {
     app.waitStarted(cb);
   });
 
+  after(function () {
+    app.server.close();
+  });
+
   describe('Sub functionality of something', function () {
     it('should do something right sync', function () {
       expect(true).to.be.true;
