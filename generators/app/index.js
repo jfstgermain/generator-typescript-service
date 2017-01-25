@@ -175,11 +175,6 @@ module.exports = class extends Generator {
       this.destinationPath('src/types/globals.d.ts')
     );
 
-    this.fs.copy(
-      this.templatePath('src/test/utils/common.ts'),
-      this.destinationPath('src/test/utils/common.ts')
-    );
-
     if (this.answers.restify) {
       this.fs.copyTpl(
         this.templatePath('src/lib/_restify-index.ts'),
@@ -223,7 +218,7 @@ module.exports = class extends Generator {
       'lodash',
       'bluebird',
       'config',
-      'lib-logger-helper@https://bitbucket.org/jfstgermain/lib-logger-helper.git'
+      'git+ssh://git@bitbucket.org/villemontreal/incubator-lib-logger-helper.git'
     ];
 
     let npmDevInstalls = [
@@ -244,7 +239,7 @@ module.exports = class extends Generator {
       'git-guppy',
       // 'tslint',  // we might want to pin down their version and not take the latest one
       // 'typescript@^2.1.4',
-      'lib-gulp-bootstrap@https://bitbucket.org/jfstgermain/lib-gulp-bootstrap.git',
+      'git+ssh://git@bitbucket.org/villemontreal/incubator-lib-gulp-bootstrap.git',
       'mocha',
       // 'gulp-tslint'
     ];

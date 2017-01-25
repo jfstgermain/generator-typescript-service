@@ -13,8 +13,9 @@ COPY package.json /usr/src/app
 # git repositories
 RUN apt-get update && apt-get install -y git
 
-RUN npm install -g gulp-cli
-RUN npm install gulp
+# Typescript is needed for TS modules that need to transpile at the
+# `postinstall` step eg: lib-logger-helper. (dev deps are not packaged for a module)
+RUN npm install -g gulp-cli typescript
 RUN npm install --no-cache --force
 
 #Bundle app source
