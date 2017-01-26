@@ -218,7 +218,8 @@ module.exports = class extends Generator {
       'lodash',
       'bluebird',
       'config',
-      'git+ssh://git@bitbucket.org/villemontreal/incubator-lib-logger-helper.git'
+      'lib-logger-helper@https://bitbucket.org/jfstgermain/lib-logger-helper.git'
+      // 'git+ssh://git@bitbucket.org/villemontreal/incubator-lib-logger-helper.git#GAML-38-add-a-temporary-postinstall-scri'
     ];
 
     let npmDevInstalls = [
@@ -237,9 +238,10 @@ module.exports = class extends Generator {
       'gulp@^3.9.1',
       'nock',
       'git-guppy',
+      'lib-gulp-bootstrap@https://bitbucket.org/jfstgermain/lib-gulp-bootstrap.git',
       // 'tslint',  // we might want to pin down their version and not take the latest one
       // 'typescript@^2.1.4',
-      'git+ssh://git@bitbucket.org/villemontreal/incubator-lib-gulp-bootstrap.git',
+      // 'git+ssh://git@bitbucket.org/villemontreal/incubator-lib-gulp-bootstrap.git',
       'mocha',
       // 'gulp-tslint'
     ];
