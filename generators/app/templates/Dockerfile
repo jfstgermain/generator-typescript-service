@@ -1,4 +1,4 @@
-FROM node:6.9.1-slim
+FROM node:6.9.1
 
 RUN echo "America/Montreal" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
