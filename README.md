@@ -1,5 +1,5 @@
 # generator-typescript-service [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> 
+>
 
 ## Installation
 
@@ -7,7 +7,7 @@ First, install [Yeoman](http://yeoman.io) and generator-typescript-service using
 
 ```bash
 npm install -g yo
-npm install -g generator-typescript-service
+npm install -g generator-typescript-service@https://bitbucket.org/jfstgermain/generator-typescript-service.git
 ```
 
 Then generate your new project:
